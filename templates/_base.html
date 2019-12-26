@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="description" content="Application by Aniket Aryamane">
+	<meta name="author" content="Aniket Aryamane">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="apple-touch-icon" href="">
+
+	{% load static %}
+
+	<!-- Link to Bootstrap CSS file -->
+	<link rel="stylesheet" href="{% static 'css/vendor/bootstrap/bootstrap.min.css' %}" type="text/css">
+
+	<!-- Link to Materialize CSS file -->
+	<!-- <link rel="stylesheet" href="{% static 'css/vendor/materialize/materialize.min.css' %}" type="text/css"> -->
+
+	<!-- Link to Font-Awesome CSS file -->
+	<link rel="stylesheet" href="{% static 'css/vendor/font-awesome/css/all.css' %}" type="text/css">
+
+	<!-- Link to your favicon.ico file -->
+	<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+
+	<!-- Link to your css file -->
+	<link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+
+</head>
+
+<body class="bg-light">
+	{% block content %}{% endblock %}
+
+
+	<!-- Link to Materialize JS file -->
+	<!-- <script src="{% static 'js/vendor/materialize/materialize.min.js' %}"></script> -->
+
+	<!-- JQuery comes first in the list -->
+	<script src="{% static 'js/vendor/bootstrap/jquery-3.4.1.min.js' %}"></script>
+	<script src="{% static 'js/vendor/bootstrap/popper.min.js' %}"></script>
+	<script src="{% static 'js/vendor/bootstrap/bootstrap.min.js' %}"></script>
+
+	<!-- Link to your js file -->
+	<script src="{% static 'js/main.js' %}"></script>
+
+	<!-- Link to your extra javascript/jquery file -->
+	{% block extra_js %}{% endblock %}
+</body>
+
+</html>
