@@ -30,7 +30,7 @@ class Profile(ObjectTracking):
 
 class EmployeeManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(profile__designation__icontains='Employee')
+        return super().get_queryset().filter(profile__designation='employee')
 
 
 class Employee(User):
@@ -50,6 +50,12 @@ def user_is_created(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     else:
+        # convert the 'designation' field of "Profile" model to lower case
+        thisuser = User.objects.get(username=str(instance))
+        designation = thisuser.profile.designation.lower()
+        thisuser.profile.designation = designation
+        instance = thisuser
+
         instance.profile.save()
 
 
