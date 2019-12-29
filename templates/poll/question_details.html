@@ -16,6 +16,11 @@
           <li class="list-group-item">{{ question.title }}</li>
           <li class="list-group-item">{{ question.status }}</li>
           <li class="list-group-item">{{ question.created_by.username|default:"None" }}</li>
+          <li class="list-group-item">
+            {% for tag in question.tags.all %}
+              {{ tag }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </li>
           <li class="list-group-item">{{ question.start_date }}</li>
           <li class="list-group-item">{{ question.end_date }}</li>
         </ul>
