@@ -27,6 +27,10 @@ class Profile(ObjectTracking):
     def __str__(self):
         return f'{self.user.username} - {self.designation}'
 
+    def save(self, *args, **kwargs):
+        self.designation = self.designation.lower()
+        super(Profile, self).save(*args, **kwargs)
+
 
 class EmployeeManager(models.Manager):
     def get_queryset(self):
@@ -51,6 +55,7 @@ def user_is_created(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
     else:
         # convert the 'designation' field of "Profile" model to lower case
+        # while saving "User" object
         thisuser = User.objects.get(username=str(instance))
         designation = thisuser.profile.designation.lower()
         thisuser.profile.designation = designation

@@ -67,7 +67,7 @@ class Question(ObjectTracking):
 
 class Choice(ObjectTracking):
     question = models.ForeignKey('Question', on_delete=models.CASCADE)
-    text = models.TextField(null=True, blank=True)
+    text = models.CharField(max_length=255)
 
     def __str__(self):
         return self.text
