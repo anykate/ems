@@ -7,6 +7,21 @@
 
 {% block content %}
   <div class="container bg-white">
-    <h1>Hello World!</h1>
+    <h2>List of Polls</h2>
+  </div>
+  <div class="container bg-white mt-5 p-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6">
+        <ul class="list-group">
+          {% for question in questions %}
+            <li class="list-group-item">
+              <a href="{% url 'poll:question_details' question_id=question.id %}">{{ question.title }}</a>
+            </li>
+            {% empty %}
+            <h4 class="mt-3 text-center display-4">No Questions!</h4>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
   </div>
 {% endblock %}
